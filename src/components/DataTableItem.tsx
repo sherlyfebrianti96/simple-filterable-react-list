@@ -1,19 +1,20 @@
 import React from 'react';
+import {PhoneListType} from './../interface/PhoneListType';
 
-interface DataTableProps {
-  data: Array<any>;
+interface DataTableItemProps {
+  data: PhoneListType;
 }
 
-export class DataTable extends React.Component<DataTableProps> {
+export class DataTableItem extends React.Component<DataTableItemProps> {
   render() {
     return (
       <tr>
-        <td>Tom Jackson</td>
-        <td>555-444-333</td>
-        <td>tom@gmail.com</td>
+        <td>{this.props.data.name}</td>
+        <td>{this.props.data.phone}</td>
+        <td>{this.props.data.email}</td>
       </tr>
     );
   };
 }
 
-export default DataTable;
+export default DataTableItem;

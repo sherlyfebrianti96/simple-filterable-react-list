@@ -1,16 +1,16 @@
 import React from 'react';
 
-interface DataTableProps {
+interface DataTableHeaderProps {
   data: Array<string>;
 }
 
 interface JSXElement extends React.ReactElement<any> { }
 type Element = JSXElement | null;
 
-export class DataTable extends React.Component<DataTableProps> {
+export class DataTableHeader extends React.Component<DataTableHeaderProps> {
   getHeaders() {
     return this.props.data.map((item: string) => {
-      return (<th>{item}</th>);
+      return (<th key={item}>{item}</th>);
     })
   }
 
@@ -23,4 +23,4 @@ export class DataTable extends React.Component<DataTableProps> {
   };
 }
 
-export default DataTable;
+export default DataTableHeader;
