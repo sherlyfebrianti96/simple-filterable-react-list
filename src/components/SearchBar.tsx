@@ -1,6 +1,17 @@
 import React from 'react';
 
-export class SearchBar extends React.Component {
+interface SearchBarProps {
+  keyword: string;
+  keywordChanged: (newKeyword: string) => void;
+  doFilter: () => void;
+}
+
+export class SearchBar extends React.Component<SearchBarProps> {
+  handleSearchBarChanged(evt: React.ChangeEvent<HTMLInputElement>) {
+    this.props.keywordChanged(evt.target.value);
+    this.props.doFilter.bind(this);
+  }
+
   render() {
     return (
       <form>
@@ -8,6 +19,8 @@ export class SearchBar extends React.Component {
           className="form-control"
           type="text"
           placeholder="Search..."
+          value={this.props.keyword}
+          onChange={this.handleSearchBarChanged.bind(this)}
         />
       </form>
     );
