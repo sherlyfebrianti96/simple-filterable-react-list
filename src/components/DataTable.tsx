@@ -1,19 +1,26 @@
 import React from 'react';
+import DataTableHeader from './DataTableHeader';
 
 interface DataTableProps {
-  data: Array<any>;
+  data: Array<PhoneListType>;
+}
+
+interface PhoneListType {
+  name: string;
+  phone: string;
+  email: string;
 }
 
 export class DataTable extends React.Component<DataTableProps> {
+  getHeaders() {
+    return Object.keys(this.props.data[0]);
+  }
+
   render() {
     return (
       <table className='table'>
         <thead>
-          <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-          </tr>
+          <DataTableHeader data={this.getHeaders()} />
         </thead>
         <tbody>
           <tr>
